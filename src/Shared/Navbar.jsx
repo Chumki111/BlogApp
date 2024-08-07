@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
@@ -33,13 +33,14 @@ function Navbar() {
             <div className="hidden lg:block">
               <div className="ml-10 flex items-baseline space-x-7">
                 {navItems.map((item) => (
-                  <Link
-                    key={item.pathname}
-                    to={item.pathname}
-                    className="hover:text-secondary font-semibold text-lg hover:underline"
-                  >
-                    {item.route}
-                  </Link>
+                <NavLink key={item.pathname}
+                  to={item.pathname}  className={({ isActive }) =>
+                    isActive
+                      ? "text-black text-xl underline"
+                      : "hover:text-violet-700 text-xl hover:underline"
+                  }>
+{item.route}
+                  </NavLink>
                 ))}
               </div>
             </div>
